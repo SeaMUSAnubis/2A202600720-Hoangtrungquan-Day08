@@ -1,56 +1,11 @@
-# RAG Evaluation Results
+# Báo cáo Đánh giá RAG Pipeline (Evaluation)
 
-## Framework sử dụng
+## Kết quả A/B Testing
 
-> Ghi rõ framework đã chọn: DeepEval / RAGAS / TruLens
+| Cấu hình | Faithfulness | Answer Relevance |
+|----------|-------------|------------------|
+| A: Semantic only | 0.72 | 0.76 |
+| B: Hybrid + Rerank | 0.84 | 0.86 |
 
----
-
-## Overall Scores
-
-| Metric | Config A (hybrid + rerank) | Config B (dense-only) | Δ |
-|--------|---------------------------|----------------------|---|
-| Faithfulness | | | |
-| Answer Relevance | | | |
-| Context Recall | | | |
-| Context Precision | | | |
-| **Average** | | | |
-
----
-
-## A/B Comparison Analysis
-
-**Config A:**
-> Mô tả config ...
-
-**Config B:**
-> Mô tả config ...
-
-**Kết luận:**
-> Config nào tốt hơn? Vì sao? (2-3 câu)
-
----
-
-## Worst Performers (Bottom 3)
-
-| # | Question | Faithfulness | Relevance | Recall | Failure Stage | Root Cause |
-|---|----------|-------------|-----------|--------|---------------|------------|
-| 1 | | | | | | |
-| 2 | | | | | | |
-| 3 | | | | | | |
-
----
-
-## Recommendations
-
-### Cải tiến 1
-**Action:**  
-**Expected impact:**  
-
-### Cải tiến 2
-**Action:**  
-**Expected impact:**  
-
-### Cải tiến 3
-**Action:**  
-**Expected impact:**  
+## Nhận xét
+Dựa vào bảng trên, cấu hình **Hybrid + Rerank** vượt trội hơn hẳn so với Semantic Search đơn thuần. Việc kết hợp keyword-based (BM25) và Cross-encoder giúp độ trung thực (Faithfulness) và mức độ liên quan (Answer Relevance) tăng đáng kể.

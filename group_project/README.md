@@ -170,8 +170,23 @@ run_dashboard()
 
 ## Kiến Trúc Hệ Thống
 
-```
-[Vẽ diagram kiến trúc ở đây]
+```mermaid
+graph TD
+    A[User Query] --> B(Giao diện Streamlit)
+    B --> C{Retrieval Pipeline}
+    C --> D[Semantic Search - ChromaDB]
+    C --> E[Lexical Search - BM25]
+    D --> F[Merge Results]
+    E --> F
+    F --> G[Cross-encoder Reranking]
+    G --> H{Score < Threshold?}
+    H -- Có --> I[PageIndex Fallback]
+    H -- Không --> J[Top K Chunks]
+    I --> K[Reorder for LLM]
+    J --> K
+    K --> L[LLM Generation w/ Citations]
+    L --> M[Chatbot Trả lời]
+    M --> B
 ```
 
 ---
@@ -180,10 +195,10 @@ run_dashboard()
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Nguyễn Viết Linh | 2A202600719 | Task (Giao diện Streamlit) | Hoàn thành |
+| Đặng Minh Chức | 2A202600611 | Task (Tích hợp RAG Pipeline) | Hoàn thành |
+| Hoàng Trung Quân | 2A202600720 | Task (Làm mượt UI/UX & Citation) | Hoàn thành |
+| Mai Ngọc Duy | 2A202600736 | Task (Evaluation) | Hoàn thành |
 
 ---
 

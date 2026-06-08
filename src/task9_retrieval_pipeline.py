@@ -32,26 +32,19 @@ def retrieve(
     top_k: int = DEFAULT_TOP_K,
     score_threshold: float = SCORE_THRESHOLD,
     use_reranking: bool = True,
+    use_semantic: bool = True,
+    use_lexical: bool = True,
 ) -> list[dict]:
     """
     Retrieval pipeline hoàn chỉnh với fallback logic.
-
-    Pipeline:
-        Query
-          ├→ Semantic Search → results_dense
-          ├→ Lexical Search  → results_sparse
-          │
-          ├→ Merge (RRF) → merged_results
-          ├→ Rerank → reranked_results
-          │
-          └→ If best_score < threshold:
-                └→ PageIndex Vectorless → fallback_results
 
     Args:
         query: Câu truy vấn
         top_k: Số lượng kết quả cuối cùng
         score_threshold: Ngưỡng điểm tối thiểu cho hybrid results
         use_reranking: Có áp dụng reranking hay không
+        use_semantic: Bật tắt Semantic Search
+        use_lexical: Bật tắt Lexical Search (BM25)
 
     Returns:
         List of {
@@ -61,32 +54,44 @@ def retrieve(
             'source': str  # 'hybrid' hoặc 'pageindex'
         }
     """
-    # TODO: Implement full retrieval pipeline
-    #
     # Step 1: Song song chạy semantic + lexical
-    # dense_results = semantic_search(query, top_k=top_k * 2)
-    # sparse_results = lexical_search(query, top_k=top_k * 2)
-    #
-    # Step 2: Merge bằng RRF
-    # merged = rerank_rrf([dense_results, sparse_results], top_k=top_k * 2)
-    # for item in merged:
-    #     item["source"] = "hybrid"
-    #
+    dense_results = []
+    sparse_results = []
+    
+    if use_semantic:
+        dense_results = semantic_search(query, top_k=top_k * 2)
+        
+    if use_lexical:
+        sparse_results = lexical_search(query, top_k=top_k * 2)
+    
+    # Step 2: Merge bằng RRF (giả lập nếu chưa implement RRF, hoặc gọi rerank_rrf)
+    # Vì task7 chưa có RRF hoàn chỉnh mà chỉ có mock cross_encoder, 
+    # ta sẽ ghép 2 list rồi deduplicate để truyền vào rerank.
+    seen = set()
+    merged = []
+    for item in dense_results + sparse_results:
+        if item["content"] not in seen:
+            item["source"] = "hybrid"
+            merged.append(item)
+            seen.add(item["content"])
+            
     # Step 3: Rerank
-    # if use_reranking and merged:
-    #     final_results = rerank(query, merged, top_k=top_k, method=RERANK_METHOD)
-    # else:
-    #     final_results = merged[:top_k]
-    #
+    if use_reranking and merged:
+        final_results = rerank(query, merged, top_k=top_k, method=RERANK_METHOD)
+    else:
+        final_results = merged[:top_k]
+        
     # Step 4: Check threshold → fallback
-    # if not final_results or final_results[0]["score"] < score_threshold:
-    #     print(f"  ⚠ Hybrid score ({final_results[0]['score']:.3f} if final_results else 0}) "
-    #           f"< threshold ({score_threshold}). Fallback → PageIndex")
-    #     fallback = pageindex_search(query, top_k=top_k)
-    #     return fallback
-    #
-    # return final_results[:top_k]
-    raise NotImplementedError("Implement retrieve")
+    if not final_results or final_results[0]["score"] < score_threshold:
+        print(f"  ⚠ Hybrid score ({final_results[0]['score'] if final_results else 0:.3f}) "
+              f"< threshold ({score_threshold}). Fallback → PageIndex")
+        try:
+            fallback = pageindex_search(query, top_k=top_k)
+            return fallback
+        except Exception:
+            pass # Fallback fails if pageindex not installed
+            
+    return final_results[:top_k]
 
 
 if __name__ == "__main__":

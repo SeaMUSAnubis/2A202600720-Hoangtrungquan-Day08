@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "luat-phong-chong-ma-tuy-2021.docx",
+    "title": "Luật Phòng, chống ma túy",
+    "document_number": "73/2021/QH14",
+    "issued_by": "Quốc hội",
+    "issued_date": "2021-03-30",
+    "effective_date": "2022-01-01",
+    "year": 2021,
+    "type": "legal_document",
+    "document_type": "Luật",
+    "topic": "phòng chống ma túy",
+    "source_group": "legal",
+    "language": "vi",
+    "description": "Luật quy định về phòng, chống ma túy; quản lý người sử dụng trái phép chất ma túy; cai nghiện ma túy; trách nhiệm của cá nhân, gia đình, cơ quan, tổ chức; quản lý nhà nước và hợp tác quốc tế về phòng, chống ma túy.",
+    "standardized_filename": "luat-phong-chong-ma-tuy-2021.md"
+  },
+  {
+    "filename": "nghi-dinh-105-2021.docx",
+    "title": "Nghị định 105/2021/NĐ-CP quy định chi tiết và hướng dẫn thi hành một số điều của Luật Phòng, chống ma túy",
+    "document_number": "105/2021/NĐ-CP",
+    "issued_by": "Chính phủ",
+    "issued_date": "2021-12-04",
+    "effective_date": "2022-01-01",
+    "year": 2021,
+    "type": "legal_document",
+    "document_type": "Nghị định",
+    "topic": "phòng chống ma túy",
+    "source_group": "legal",
+    "language": "vi",
+    "description": "Nghị định quy định chi tiết và hướng dẫn thi hành một số điều của Luật Phòng, chống ma túy về phối hợp của các cơ quan chuyên trách, kiểm soát hoạt động hợp pháp liên quan đến ma túy và quản lý người sử dụng trái phép chất ma túy.",
+    "standardized_filename": "nghi-dinh-105-2021.md"
+  },
+  {
+    "filename": "nghi-dinh-28-2026-nd-cp-danh-muc-chat-ma-tuy-va-tien-chat.docx",
+    "title": "Nghị định 28/2026/NĐ-CP quy định các danh mục chất ma túy và tiền chất",
+    "document_number": "28/2026/NĐ-CP",
+    "issued_by": "Chính phủ",
+    "issued_date": "2026-01-19",
+    "effective_date": "2026-01-19",
+    "year": 2026,
+    "type": "legal_document",
+    "document_type": "Nghị định",
+    "topic": "danh mục chất ma túy và tiền chất",
+    "source_group": "legal",
+    "language": "vi",
+    "description": "Nghị định ban hành các danh mục chất ma túy và tiền chất, gồm Danh mục I, II, III và IV.",
+    "standardized_filename": "nghi-dinh-28-2026-nd-cp-danh-muc-chat-ma-tuy-va-tien-chat.md"
+  }
+]
