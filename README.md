@@ -33,8 +33,8 @@ Hệ thống đã hoàn thiện toàn bộ các yêu cầu cơ bản và các đ
 | **UI/UX chất lượng** (hiển thị source, score, highlight) *(3 điểm)* | ✅ Hoàn thành | Giao diện web Streamlit mượt mà, trực quan. Người dùng có thể bấm vào Expander để xem chi tiết Source chunk, điểm Relevance Score và metadata của từng trích dẫn. |
 | **Conversation memory** (multi-turn chat) *(3 điểm)* | ✅ Hoàn thành | Sử dụng `st.session_state` trong Streamlit để lưu trữ toàn bộ lịch sử hội thoại, cho phép người dùng hỏi các câu follow-up tự nhiên. |
 | **Deploy chatbot online** *(4 điểm)* | ⏳ Sẵn sàng | Code đã được dockerize/chuẩn hóa environment, sẵn sàng deploy lên Hugging Face Spaces hoặc Render chỉ với 1 click qua file requirements.txt. |
-| **Implement HyDE** *(5 điểm)* | ❌ Chưa áp dụng | (Mở rộng trong tương lai) |
-| **Giải thích cơ chế lexical search khác BM25** *(5 điểm)* | ❌ Chưa áp dụng | Đã sử dụng chuẩn BM25 tối ưu thay vì TF-IDF. |
+| **Implement HyDE** *(5 điểm)* | ✅ Hoàn thành | Đã tích hợp HyDE vào Semantic Search. Người dùng có thể dễ dàng bật/tắt tính năng HyDE ở thanh Cài đặt hệ thống (Sidebar) trong giao diện Chatbot. |
+| **Giải thích cơ chế lexical search khác BM25** *(5 điểm)* | ✅ Hoàn thành | Đã bổ sung tài liệu [TF_IDF_Explanation.md](TF_IDF_Explanation.md) để giải thích chi tiết cơ chế TF-IDF và so sánh với BM25. |
 
 ---
 

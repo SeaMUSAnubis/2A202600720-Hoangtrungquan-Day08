@@ -13,6 +13,10 @@ st.set_page_config(page_title="RAG Chatbot - Pháp luật Ma Tuý", page_icon="�
 st.title(" Chatbot Tư Vấn Pháp Luật Phòng Chống Ma Tuý")
 st.markdown("Hệ thống RAG Pipeline tìm kiếm và giải đáp dựa trên dữ liệu pháp luật và tin tức thực tế.")
 
+# Sidebar Settings
+st.sidebar.title("⚙️ Cài đặt hệ thống")
+use_hyde = st.sidebar.checkbox("Bật HyDE (Bonus)", value=False, help="Sử dụng LLM để tạo ra tài liệu giả định, cải thiện kết quả tìm kiếm ngữ nghĩa.")
+
 # Khởi tạo lịch sử chat
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -39,7 +43,7 @@ if prompt := st.chat_input("Nhập câu hỏi của bạn (ví dụ: Hình phạ
             history = st.session_state.messages[:-1]
             
             # Gọi RAG pipeline (Task 10)
-            result = generate_with_citation(prompt, top_k=5, chat_history=history)
+            result = generate_with_citation(prompt, top_k=5, chat_history=history, use_hyde=use_hyde)
             
             answer = result["answer"]
             sources = result["sources"]

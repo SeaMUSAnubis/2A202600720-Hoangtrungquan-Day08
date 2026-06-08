@@ -195,10 +195,10 @@ graph TD
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| Nguyễn Viết Linh | 2A202600719 | Task (Giao diện Streamlit) | Hoàn thành |
-| Đặng Minh Chức | 2A202600611 | Task (Tích hợp RAG Pipeline) | Hoàn thành |
-| Hoàng Trung Quân | 2A202600720 | Task (Làm mượt UI/UX & Citation) | Hoàn thành |
-| Mai Ngọc Duy | 2A202600736 | Task (Evaluation) | Hoàn thành |
+| Nguyễn Viết Linh | 2A202600719 | Task A (Giao diện Streamlit) | Hoàn thành |
+| Hoàng Trung Quân | 2A202600720 | Task B (Tích hợp RAG Pipeline) | Hoàn thành |
+| Đặng Minh Chức | 2A202600611 |Task C (Làm mượt UI/UX & Citation) | Hoàn thành |
+| Mai Ngọc Duy | 2A202600736 | Task D (Evaluation) | Hoàn thành |
 
 ---
 

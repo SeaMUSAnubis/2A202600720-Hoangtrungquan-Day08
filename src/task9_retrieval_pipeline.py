@@ -34,6 +34,7 @@ def retrieve(
     use_reranking: bool = True,
     use_semantic: bool = True,
     use_lexical: bool = True,
+    use_hyde: bool = False,
 ) -> list[dict]:
     """
     Retrieval pipeline hoàn chỉnh với fallback logic.
@@ -45,6 +46,7 @@ def retrieve(
         use_reranking: Có áp dụng reranking hay không
         use_semantic: Bật tắt Semantic Search
         use_lexical: Bật tắt Lexical Search (BM25)
+        use_hyde: Bật tắt Hypothetical Document Embeddings (HyDE)
 
     Returns:
         List of {
@@ -59,7 +61,7 @@ def retrieve(
     sparse_results = []
     
     if use_semantic:
-        dense_results = semantic_search(query, top_k=top_k * 2)
+        dense_results = semantic_search(query, top_k=top_k * 2, use_hyde=use_hyde)
         
     if use_lexical:
         sparse_results = lexical_search(query, top_k=top_k * 2)
