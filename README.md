@@ -24,9 +24,17 @@ Hệ thống đã hoàn thiện toàn bộ các yêu cầu cơ bản và các đ
   - Reranking (Jina AI Cross-Encoder) tối ưu hóa độ chính xác.
   - Fallback Vectorless RAG với PageIndex khi các search truyền thống có điểm số thấp.
 - **Generation & Citation (Task 10):** Chống lỗi "Lost in the Middle" qua thuật toán Reordering, AI trả lời có trích dẫn nguồn chuẩn xác, có hỗ trợ sử dụng **OpenRouter API** làm fallback model.
-- **Sản phẩm Nhóm (Bonus):**
-  - Giao diện web Streamlit mượt mà, trực quan.
-  - Evaluation Pipeline tự động chạy test và đánh giá (DeepEval/Ragas).
+- **Evaluation Pipeline:** Tự động chạy test và đánh giá bằng dataset mẫu.
+
+### Các Yêu Cầu Bonus (Điểm Thưởng) Đã Đạt Được:
+
+| Tiêu chí Bonus | Tình trạng | Chi tiết Triển khai |
+|---|---|---|
+| **UI/UX chất lượng** (hiển thị source, score, highlight) *(3 điểm)* | ✅ Hoàn thành | Giao diện web Streamlit mượt mà, trực quan. Người dùng có thể bấm vào Expander để xem chi tiết Source chunk, điểm Relevance Score và metadata của từng trích dẫn. |
+| **Conversation memory** (multi-turn chat) *(3 điểm)* | ✅ Hoàn thành | Sử dụng `st.session_state` trong Streamlit để lưu trữ toàn bộ lịch sử hội thoại, cho phép người dùng hỏi các câu follow-up tự nhiên. |
+| **Deploy chatbot online** *(4 điểm)* | ⏳ Sẵn sàng | Code đã được dockerize/chuẩn hóa environment, sẵn sàng deploy lên Hugging Face Spaces hoặc Render chỉ với 1 click qua file requirements.txt. |
+| **Implement HyDE** *(5 điểm)* | ❌ Chưa áp dụng | (Mở rộng trong tương lai) |
+| **Giải thích cơ chế lexical search khác BM25** *(5 điểm)* | ❌ Chưa áp dụng | Đã sử dụng chuẩn BM25 tối ưu thay vì TF-IDF. |
 
 ---
 
